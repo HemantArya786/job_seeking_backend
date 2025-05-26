@@ -8,17 +8,17 @@ router.get("/", async (req, res) => {
   const {
     title = "",
     location = "",
-    salary_min = "",
-    sort_by = "",
-    salary_max = "",
-    what_exclude = "",
-    days_old = "",
-    full_time = "",
-    results_per_page = "",
-    permanent = "",
+    // salary_min = "",
+    // sort_by = "",
+    // salary_max = "",
+    // what_exclude = "",
+    // days_old = "",
+    // full_time = "",
+    // results_per_page = "",
+    // permanent = "",
   } = req.query;
 
-  console.log(req.query, "req query");
+  console.log(req.query.title, "req query");
 
   try {
     console.log("try is called");
@@ -40,7 +40,7 @@ router.get("/", async (req, res) => {
       // created: job.created,
     }));
 
-    console.log(jobs, "jobzz");
+    // console.log(jobs, "jobzz");
     res.json(jobs);
   } catch (err) {
     console.error("Error fetching jobs:", err.message);
