@@ -11,6 +11,10 @@ app.use(express.json());
 app.use(cors());
 
 console.log("API server is starting...");
-app.use("/api/jobs", jobRoutes);
+// app.use("/api/jobs", jobRoutes);
+
+app.get("/", (req, res) => {
+  res.send("api is working");
+});
 
 module.exports = serverless(app); // ✅ This is required by Vercel
