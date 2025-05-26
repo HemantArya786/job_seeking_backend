@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const jobRoutes = require("./jobs"); // ✅ CORRECT PATH
+const jobRoutes = require("./jobs"); // make sure it's in the same /api folder
 const serverless = require("serverless-http");
 const cors = require("cors");
 
@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 
 console.log("API server is starting...");
+app.use("/api/jobs", jobRoutes);
 
-app.use("/api/jobs", jobRoutes); // ✅ Matches the route
-
-module.exports.handler = serverless(app);
+module.exports = serverless(app); // ✅ This is required by Vercel
