@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const jobRoutes = require("./routes/jobs");
+const jobRoutes = require("../routes/jobs");
+const serverless = require("serverless-http");
 var cors = require("cors");
 dotenv.config();
 
@@ -10,4 +11,4 @@ app.use(cors());
 app.use("/api/jobs", jobRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports.handler = serverless(app);
