@@ -1,3 +1,5 @@
+console.log("API server is starting...");
+
 const express = require("express");
 const dotenv = require("dotenv");
 const jobRoutes = require("./jobs");
@@ -11,4 +13,10 @@ app.use(cors());
 app.use("/api/jobs", jobRoutes);
 
 const PORT = process.env.PORT || 3000;
+if (require.main === module) {
+  app.listen(3000, () =>
+    console.log("Server running on http://localhost:3000")
+  );
+}
+
 module.exports.handler = serverless(app);
